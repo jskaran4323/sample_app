@@ -21,7 +21,7 @@ defmodule SampleAppWeb do
 
   def router do
     quote do
-      use Phoenix.Router, helpers: false
+      use Phoenix.Router, helpers: true
 
       # Import common connection and controller functions to use in pipelines
       import Plug.Conn
@@ -44,7 +44,7 @@ defmodule SampleAppWeb do
 
       import Plug.Conn
       import SampleAppWeb.Gettext
-
+        alias SampleAppWeb.Router.Helpers, as: Routes
       unquote(verified_routes())
     end
   end

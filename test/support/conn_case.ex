@@ -28,8 +28,14 @@ defmodule SampleAppWeb.ConnCase do
       import Plug.Conn
       import Phoenix.ConnTest
       import SampleAppWeb.ConnCase
+
+      alias SampleAppWeb.Router.Helpers, as: Routes
+
+
+
     end
   end
+
 
   setup tags do
     SampleApp.DataCase.setup_sandbox(tags)
