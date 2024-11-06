@@ -7,7 +7,7 @@ defmodule SampleAppWeb.Router do
     plug(:accepts, ["html"])
     plug(:fetch_session)
     plug(:fetch_live_flash)
-   
+
     plug(:protect_from_forgery)
     plug(:put_secure_browser_headers)
   end
@@ -19,7 +19,7 @@ defmodule SampleAppWeb.Router do
   scope "/", SampleAppWeb do
     pipe_through(:browser)
 
-    get("/", PageController, :home)
+    get("/", StaticPageController, :home, as: :root)
 
     get("/static_pages/home", StaticPageController, :home)
     get("/static_pages/help", StaticPageController, :help)
