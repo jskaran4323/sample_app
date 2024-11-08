@@ -25,6 +25,7 @@ config :sample_app, SampleAppWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "7qnpQW14jFgC0TGLNdRrjQD0QPm//0fHLeytYCDskrXdMK4fO2/T2VDT8nBnXWcn",
   watchers: [
+      node: ["build.js", "--watch", cd: Path.expand("../assets", __DIR__)],
     esbuild: {Esbuild, :install_and_run, [:sample_app, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:sample_app, ~w(--watch)]}
   ]

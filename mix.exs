@@ -70,6 +70,7 @@ defmodule SampleApp.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
+       setup: ["deps.get", "ecto.setup", "cmd --cd assets npm install"],
       setup: ["deps.get", "ecto.setup", "assets.setup", "assets.build"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
@@ -80,7 +81,10 @@ defmodule SampleApp.MixProject do
         "tailwind sample_app --minify",
         "esbuild sample_app --minify",
         "phx.digest"
-      ]
+      ],
+      "assets.deploy": ["cmd --cd assets node build.js --deploy", "phx.digest"]
+    
+
 
     ]
   end
