@@ -1,11 +1,11 @@
 defmodule SampleAppWeb.StaticPageControllerTest do
   use SampleAppWeb.ConnCase
 
-   @base_title "Phoenix Tutorial Sample App"
+  
      test "should get home", %{conn: conn} do
     conn = get(conn, Routes.static_page_path(conn, :home))
 
-    assert html_response(conn, 200) =~ "title", "Home | #{@base_title}</title>"
+    assert html_response(conn, 200) =~ "title","Home |  Phoenix Tutorial Sample App"
    end
 
   test "should get help", %{conn: conn} do

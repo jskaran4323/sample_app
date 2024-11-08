@@ -81,6 +81,7 @@ defmodule SampleApp.MixProject do
         "esbuild sample_app --minify",
         "phx.digest"
       ]
+
     ]
   end
 end

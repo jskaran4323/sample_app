@@ -1,0 +1,7 @@
+For example:
+
+five(four(three(two(one()))))
+We can make easier sense of it using the |> operator by treating the nested calls more sequentially by “unwrapping” them and linking them in a series with the pipe operator:
+
+one() |> two() |> three() |> four() |> five()
+The pipe operator takes the result on the left, and passes it to the right hand side.

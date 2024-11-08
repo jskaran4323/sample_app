@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,6 +9,37 @@
     </title>
   </head>
   <body>
+  <header>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+          <.link navigate="#" id="logo" class="navbar-brand">Sample app</.link>
+
+          <button class="navbar-toggler" type="button"
+          data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false"
+          aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse ms-auto" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+               <.link navigate="#" id="logo" class="nav-link">Home</.link>
+               </li>
+              <li class="nav-item">
+               <.link navigate="#" id="logo" class="nav-link">Help</.link>
+              </li>
+              <li class="nav-item">
+               <.link navigate="#" id="logo" class="nav-link">About</.link>
+              </li>
+            </ul>
+          </div>
+      </div>
+    </nav>
+  </header>
+  <div class="container mt-4">
     <%= @inner_content %>
+  </div>
+  <script type="text/javascript" src={~p"/assets/app.js"}></script>
+
   </body>
 </html>
