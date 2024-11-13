@@ -20,7 +20,7 @@ config :sample_app, SampleAppWeb.Endpoint,
     layout: false
   ],
   pubsub_server: SampleApp.PubSub,
-  live_view: [signing_salt: "fHIv9A01"]
+  live_view: [signing_salt: "iLQ1e9Xy"]
 
 # Configures the mailer
 #
@@ -64,5 +64,3 @@ config :phoenix, :json_library, Jason
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
-config :sample_app, SampleAppWeb.Endpoint,
-  render_errors: [view: SampleAppWeb.ErrorView, layout: {SampleAppWeb.Layouts, :app}]

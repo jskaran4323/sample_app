@@ -1,30 +1,30 @@
 defmodule SampleAppWeb.Router do
-
   use SampleAppWeb, :router
 
-
   pipeline :browser do
-    plug(:accepts, ["html"])
-    plug(:fetch_session)
-    plug(:fetch_live_flash)
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_live_flash
 
-    plug(:protect_from_forgery)
-    plug(:put_secure_browser_headers)
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
   end
 
   pipeline :api do
-    plug(:accepts, ["json"])
+    plug :accepts, ["json"]
   end
 
   scope "/", SampleAppWeb do
-    pipe_through(:browser)
+    pipe_through :browser
 
     get("/", StaticPageController, :home, as: :root)
 
     get("/static_pages/home", StaticPageController, :home)
     get("/static_pages/help", StaticPageController, :help)
-       get("/static_pages/about", StaticPageController, :about)
-  end
+    get("/static_pages/about", StaticPageController, :about)
+    get("/static_pages/contact", StaticPageController, :contact)
+
+      end
 
   # Other scopes may use custom stacks.
   # scope "/api", SampleAppWeb do
@@ -41,10 +41,10 @@ defmodule SampleAppWeb.Router do
     import Phoenix.LiveDashboard.Router
 
     scope "/dev" do
-      pipe_through(:browser)
+      pipe_through :browser
 
-      live_dashboard("/dashboard", metrics: SampleAppWeb.Telemetry)
-      forward("/mailbox", Plug.Swoosh.MailboxPreview)
+      live_dashboard "/dashboard", metrics: SampleAppWeb.Telemetry
+      forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end
 end

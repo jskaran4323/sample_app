@@ -11,4 +11,80 @@ defmodule SampleAppWeb.Layouts do
   use SampleAppWeb, :html
 
   embed_templates "layouts/*"
+
+  def header(assigns) do
+    ~H"""
+    <header>
+      <nav class="bg-gray-900 text-white fixed top-0 w-full shadow-md">
+        <div class="container mx-auto flex items-center justify-between px-4 py-3">
+          <.link
+            navigate={~p"/static_pages/home"}
+            id="logo"
+            class="text-2xl font-bold uppercase hover:text-gray-300"
+          >
+            Sample App
+          </.link>
+          <button
+            class="text-white md:hidden"
+            type="button"
+            aria-label="Toggle navigation"
+            onclick="document.getElementById('navbarNav').classList.toggle('hidden')"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              >
+              </path>
+            </svg>
+          </button>
+          <div id="navbarNav" class="hidden md:flex md:items-center space-x-4">
+            <ul class="flex space-x-4">
+              <li class="nav-item">
+                <.link navigate={~p"/static_pages/home"} class="hover:text-gray-300">Home</.link>
+              </li>
+              <li class="nav-item">
+                <.link navigate={~p"/static_pages/help"} class="hover:text-gray-300">Help</.link>
+              </li>
+              <li class="nav-item">
+                <.link navigate="#" class="hover:text-gray-300">Log in</.link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    """
+  end
+
+  def footer(assigns) do
+    ~H"""
+    <footer class="footer">
+      <div class="container">
+        <small>
+          The <a href="#">Phoenix SampleApp</a>
+          <a href="#"></a>
+        </small>
+        <nav>
+          <ul>
+            <li>
+              <.link navigate={~p"/static_pages/about"} class="hover:text-gray-300">
+                About
+              </.link>
+            </li>
+            <li><.link navigate={~p"/static_pages/contact"}>Contact</.link></li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+    """
+  end
 end
