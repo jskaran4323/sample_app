@@ -19,11 +19,12 @@ defmodule SampleAppWeb.Router do
 
     get("/", StaticPageController, :home, as: :root)
 
-    get("/static_pages/home", StaticPageController, :home)
-    get("/static_pages/help", StaticPageController, :help)
-    get("/static_pages/about", StaticPageController, :about)
-    get("/static_pages/contact", StaticPageController, :contact)
 
+
+    get("/help", StaticPageController, :help, as: :help)
+    get("/about", StaticPageController, :about, as: :about)
+    get("/contact", StaticPageController, :contact, as: :contact)
+    get("/users/new", UserController,:new)
       end
 
   # Other scopes may use custom stacks.

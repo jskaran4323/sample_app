@@ -18,7 +18,7 @@ defmodule SampleAppWeb.Layouts do
       <nav class="bg-gray-900 text-white fixed top-0 w-full shadow-md">
         <div class="container mx-auto flex items-center justify-between px-4 py-3">
           <.link
-            navigate={~p"/static_pages/home"}
+            navigate={~p"/"}
             id="logo"
             class="text-2xl font-bold uppercase hover:text-gray-300"
           >
@@ -49,10 +49,10 @@ defmodule SampleAppWeb.Layouts do
           <div id="navbarNav" class="hidden md:flex md:items-center space-x-4">
             <ul class="flex space-x-4">
               <li class="nav-item">
-                <.link navigate={~p"/static_pages/home"} class="hover:text-gray-300">Home</.link>
+                <.link navigate={~p"/"} class="hover:text-gray-300">Home</.link>
               </li>
               <li class="nav-item">
-                <.link navigate={~p"/static_pages/help"} class="hover:text-gray-300">Help</.link>
+                <.link navigate={~p"/help"} class="hover:text-gray-300">Help</.link>
               </li>
               <li class="nav-item">
                 <.link navigate="#" class="hover:text-gray-300">Log in</.link>
@@ -76,11 +76,11 @@ defmodule SampleAppWeb.Layouts do
         <nav>
           <ul>
             <li>
-              <.link navigate={~p"/static_pages/about"} class="hover:text-gray-300">
+              <.link navigate={~p"/about"} class="hover:text-gray-300">
                 About
               </.link>
             </li>
-            <li><.link navigate={~p"/static_pages/contact"}>Contact</.link></li>
+            <li><.link navigate={~p"/contact"}>Contact</.link></li>
           </ul>
         </nav>
       </div>

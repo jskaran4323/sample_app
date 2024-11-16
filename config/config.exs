@@ -13,7 +13,7 @@ config :sample_app,
 
 # Configures the endpoint
 config :sample_app, SampleAppWeb.Endpoint,
-  url: [host: "localhost"],
+url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
     formats: [html: SampleAppWeb.ErrorHTML, json: SampleAppWeb.ErrorJSON],
