@@ -103,6 +103,8 @@ defmodule SampleAppWeb do
         statics: SampleAppWeb.static_paths()
     end
   end
+  # lib/sample_app_web.ex
+
 
   @doc """
   When used, dispatch to the appropriate controller/live_view/etc.
