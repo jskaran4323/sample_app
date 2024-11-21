@@ -20,7 +20,7 @@ defmodule SampleApp.Accounts do
   def list_users do
     Repo.all(User)
   end
-  
+
   def user_name(name) do
   Repo.get_by(User, name: name)
   end
@@ -104,4 +104,11 @@ defmodule SampleApp.Accounts do
   def change_user(%User{} = user, attrs \\ %{}) do
     User.changeset(user, attrs)
   end
+  @doc """
+  deletes all users from the database
+  """
+  def delete_all_users do
+    Repo.delete_all(User)
+  end
+
 end
