@@ -76,8 +76,10 @@ defmodule SampleAppWeb do
 
       # Include general helpers for rendering HTML
       unquote(html_helpers())
+
     end
   end
+
 
   defp html_helpers do
     quote do
@@ -103,6 +105,10 @@ defmodule SampleAppWeb do
         statics: SampleAppWeb.static_paths()
     end
   end
+
+  
+  # lib/sample_app_web.ex
+
 
   @doc """
   When used, dispatch to the appropriate controller/live_view/etc.

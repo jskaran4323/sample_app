@@ -24,8 +24,10 @@ defmodule SampleAppWeb.Router do
     get("/help", StaticPageController, :help, as: :help)
     get("/about", StaticPageController, :about, as: :about)
     get("/contact", StaticPageController, :contact, as: :contact)
-    get("/users/new", UserController,:new)
-      end
+    get("/signup", UserController,:new, as: :signup)
+    post("/signup", UserController,:create, as: :signup)
+    resources "/users", UserController
+  end
 
   # Other scopes may use custom stacks.
   # scope "/api", SampleAppWeb do

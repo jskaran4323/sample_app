@@ -1,2 +1,50 @@
-<h1>User#new</h1>
-<p>Find me in lib/sample_app_web/templates/user/new.html.heex</p>
+<h1 class="text-2xl font-bold text-center mb-6">Sign up</h1>
+
+<.form :let={f} for={@changeset} class="max-w-md mx-auto bg-white shadow-md rounded-lg p-6 space-y-4" action={~p"/signup"} methods="post">
+
+  
+  <div>
+  <.input 
+    field={f[:name]} 
+    label="Enter your name" 
+    class="block w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+    label_class="block text-sm font-medium text-gray-700"
+  />
+   <%= raw(error_tag(f, :name)) %>
+  </div>
+  <div>
+  <.input 
+    field={f[:email]} 
+    label="Enter your email" 
+    class="block w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+    label_class="block text-sm font-medium text-gray-700"
+  /> <%= raw(error_tag(f, :email)) %>
+   </div>
+  <div>
+  <.input 
+    field={f[:password]} 
+    label="Enter your password" 
+    type="password"
+    class="block w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+    label_class="block text-sm font-medium text-gray-700"
+  /> <%= raw(error_tag(f, :password)) %>
+  </div>
+ <div>
+  <.input 
+    field={f[:password_confirmation]} 
+    label="Confirm your password" 
+    type="password"
+    class="block w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+    label_class="block text-sm font-medium text-gray-700"
+  /> <%= raw(error_tag(f, :password_confirmation)) %>
+  </div>
+  
+  <div class="flex justify-center">
+    <button 
+      type="submit" 
+      class="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:outline-none"
+    >
+     Create My Account
+    </button>
+  </div>
+</.form>
