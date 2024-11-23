@@ -110,5 +110,5 @@ defmodule SampleApp.Accounts do
   def delete_all_users do
     Repo.delete_all(User)
   end
-
+ 
 end

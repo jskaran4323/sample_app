@@ -1,13 +1,27 @@
 defmodule SampleAppWeb.UserController do
   use SampleAppWeb, :controller
   alias SampleApp.Accounts
-  def new(conn, _params) do
-    render(conn, "new.html")
-  end
+  alias SampleApp.Accounts.User
+
   def show(conn, %{"id" => id})do
     user= Accounts.get_user!(id)
-
     render(conn,"show.html", user: user, title: user.name)
+  end
+
+  def create(conn,%{"user"=> user_params}) do
+    case Accounts.create_user(user_params) do
+      {:ok,_user}->
+        conn
+        
+
+        # handle a successful signup
+        {:error, %Ecto.Changeset{}=changeset}->
+          render(conn,"new.html", changeset: changeset)
+    end
+  end
+  def new(conn, _params) do
+    changeset=Accounts.change_user(%User{})
+    render(conn, "new.html", changeset: changeset)
   end
 
 end
