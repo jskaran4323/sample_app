@@ -10,6 +10,12 @@
   <body>
      <SampleAppWeb.Layouts.header />
   <div class="container mt-4">
+   <%= if @flash do %>
+  <div :for={{message_type, message} <- @flash}} class={"alert alert-#{message_type}"}>
+    <%= message %>
+  </div>
+<% end %>
+
     <%= @inner_content %>
   </div>
   <script type="text/javascript" src={~p"/assets/app.js"}></script>

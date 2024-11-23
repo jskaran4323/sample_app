@@ -10,9 +10,10 @@ defmodule SampleAppWeb.UserController do
 
   def create(conn,%{"user"=> user_params}) do
     case Accounts.create_user(user_params) do
-      {:ok,_user}->
+      {:ok,user}->
         conn
-        
+      |> put_flash(:success, "Welcome to Sample App")
+      |> redirect(to: ~p"/users/#{user.id}")
 
         # handle a successful signup
         {:error, %Ecto.Changeset{}=changeset}->
