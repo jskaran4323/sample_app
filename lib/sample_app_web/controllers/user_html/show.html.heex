@@ -4,20 +4,31 @@
   <aside class="col-md-4">
     <section class="user_info">
 <h1>
-   <%= SampleAppWeb.GravatarHelper.gravatar_for(assigns[:user] ) %>
+   <%= SampleAppWeb.GravatarHelper.gravatar_for(assigns[:user]) %>
   <%= assigns[:user].name %>
 </h1>
    </section>
   </aside>
 </div>
-<h1>User Profile</h1>
-<p>Name: <%= @user.name %></p>
-<p>Email: <%= @user.email %></p>
-<p>inserted_at: <%= @user.inserted_at %></p>
-<p>updated_at: <%= @user.updated_at %></p>
-<p>NaiveDateTime: <%= NaiveDateTime.utc_now() %></p>
+<h1 class="text-2xl font-bold text-gray-800 mb-4 text-center">User Profile</h1>
+    <div class="space-y-2">
+      <p class="text-gray-600">
+        <span class="font-semibold text-gray-800">Name:</span> <%= @user.name %>
+      </p>
+      <p class="text-gray-600">
+        <span class="font-semibold text-gray-800">Email:</span> <%= @user.email %>
+      </p>
+      <p class="text-gray-600">
+        <span class="font-semibold text-gray-800">Inserted At:</span> <%= @user.inserted_at %>
+      </p>
+      <p class="text-gray-600">
+        <span class="font-semibold text-gray-800">Updated At:</span> <%= @user.updated_at %>
+      </p>
+      <p class="text-gray-600">
+        <span class="font-semibold text-gray-800">NaiveDateTime:</span> <%= NaiveDateTime.utc_now() %>
+      </p>
 
-
+</div>
 
     <div class="mt-6 text-center">
       <.link navigate={~p"/users/#{@user.id}/edit"} class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
@@ -30,5 +41,11 @@
         class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded ml-2"
       >
         Delete Account
+      </.link>
+       <.link
+        href={~p"/users"}
+        class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded ml-2"
+      >
+        Show All Users
       </.link>
           </div>

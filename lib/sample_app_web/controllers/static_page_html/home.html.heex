@@ -1,5 +1,5 @@
-<div class="hero-container container-fluid rounded p-5 mb-4">
-  <div class="container text-center p-5">
+<div class="hero-container container-fluid rounded p-5 mb-4 ">
+  <div class="container text-center p-7">
     <h1>Welcome to the Sample App</h1>
     <h2>
       This is the home page for the
@@ -8,9 +8,15 @@
       </.link>
       sample application.
     </h2>
-    <.link navigate={~p"/signup"} class="btn btn-lg btn-primary">
+    <%= if assigns[:current_user] do %>
+    <.link navigate={~p"/users/#{assigns[:current_user].id}"} class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+      See Your Profile
+    </.link>
+    <% else %>
+    <.link navigate={~p"/signup"} class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
       Sign up now!
     </.link>
+    <% end %>
   </div>
 </div>
 

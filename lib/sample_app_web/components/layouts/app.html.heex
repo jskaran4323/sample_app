@@ -8,7 +8,7 @@
     <link rel="stylesheet" href={~p"/assets/app.css"} />
   </head>
   <body>
-     <SampleAppWeb.Layouts.header />
+     <SampleAppWeb.Layouts.header current_user={@current_user}/>
   <div class="container mt-4">
    <%= if @flash do %>
   <div :for={{message_type, message} <- @flash}} class={"alert alert-#{message_type}"}>
