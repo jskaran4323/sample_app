@@ -27,10 +27,12 @@ defmodule SampleAppWeb.Router do
     get("/signup", UserController,:new, as: :signup)
     post("/signup", UserController,:create, as: :signup)
     get("/login", SessionController, :new,as: :login)
-    post("/login", SessionController, :create,as: :login)
-    delete("/logout", SessionController, :delete ,as: :logout)
 
-    resources "/users", UserController
+    post("/login", SessionController, :create,as: :login)
+
+    get "/logout", SessionController, :delete
+
+    resources "/users", UserController, only: [:index, :show, :edit, :update, :delete]
   end
 
   # Other scopes may use custom stacks.

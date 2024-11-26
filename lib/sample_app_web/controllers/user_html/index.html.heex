@@ -1,0 +1,28 @@
+<div class="container mx-auto px-4 py-6">
+  <h1 class="text-2xl font-bold mb-4">All Users</h1>
+
+  <table class="min-w-full bg-white border border-gray-200">
+    <thead>
+      <tr class="bg-gray-100">
+        <th class="py-2 px-4 text-left">ID</th>
+        <th class="py-2 px-4 text-left">Name</th>
+        <th class="py-2 px-4 text-left">Email</th>
+        <th class="py-2 px-4 text-left">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for user <- @users do %>
+        <tr class="border-t">
+          <td class="py-2 px-4"><%= user.id %></td>
+          <td class="py-2 px-4"><%= user.name %></td>
+          <td class="py-2 px-4"><%= user.email %></td>
+          <td class="py-2 px-4">
+            <.link navigate={~p"/users/#{user.id}"} class="text-blue-500 hover:underline">Show</.link> |
+            <.link navigate={~p"/users/#{user.id}/edit"} class="text-green-500 hover:underline">Edit</.link> |
+            <.link href={~p"/users/#{user.id}"} method="delete" data-confirm="Are you sure?" class="text-red-500 hover:underline">Delete</.link>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -13,6 +13,7 @@ defmodule SampleAppWeb.Layouts do
   embed_templates "layouts/*"
 
   def header(assigns) do
+
     ~H"""
     <header>
       <nav class="bg-gray-900 text-white fixed top-0 w-full shadow-md">
@@ -55,26 +56,24 @@ defmodule SampleAppWeb.Layouts do
                 <.link navigate={~p"/help"} class="hover:text-gray-300">Help</.link>
               </li>
              <li class="nav-item">
-               <%= IO.inspect(assigns[:current_user], label: "Current User in Template") %>
-              <%= if assigns[:current_user] do %>
 
 
-              <.link
-               navigate={~p"/logout"}
-               method="delete"
-              class="hover:text-gray-300"
-              >
-                Log out
-              </.link>
-                <% else %>
-              <.link
-                 navigate={~p"/login"}
-               class="hover:text-gray-300"
-                >
-                Log in
-                </.link>
+               <%= if assigns[:current_user] do %>
+               <li>
+             <.link
+               navigate={~p"/logout"} method="delete"   class="hover:text-gray-300"
+               >
+              Log out
+            </.link>
+          </li>
+        <% else %>
+          <li>
+      <.link navigate={~p"/login"} class="hover:text-gray-300">
+      Login
+       </.link>
+       </li>
+         <% end %>
 
-              <% end %>
             </li>
             </ul>
           </div>
