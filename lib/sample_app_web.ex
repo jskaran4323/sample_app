@@ -10,7 +10,7 @@ defmodule SampleAppWeb do
 
   The definitions below will be executed for every controller,
   component, etc, so keep them short and clean, focused
-  on imports, uses and aliases.
+  on imports, uses, and aliases.
 
   Do NOT define functions inside the quoted expressions
   below. Instead, define additional modules and import
@@ -27,6 +27,9 @@ defmodule SampleAppWeb do
       import Plug.Conn
       import Phoenix.Controller
       import Phoenix.LiveView.Router
+
+      # Alias for routes
+      alias SampleAppWeb.Router.Helpers, as: Routes
     end
   end
 
@@ -76,10 +79,8 @@ defmodule SampleAppWeb do
 
       # Include general helpers for rendering HTML
       unquote(html_helpers())
-
     end
   end
-
 
   defp html_helpers do
     quote do
@@ -106,9 +107,7 @@ defmodule SampleAppWeb do
     end
   end
 
-  
-  # lib/sample_app_web.ex
-
+ 
 
   @doc """
   When used, dispatch to the appropriate controller/live_view/etc.

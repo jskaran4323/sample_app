@@ -110,5 +110,32 @@ defmodule SampleApp.Accounts do
   def delete_all_users do
     Repo.delete_all(User)
   end
- 
+
+  @doc"""
+  Retrieves a user by email and password
+  """
+def get_user_by_email_password(email, password) do
+  user = Repo.get_by(User, email: email)
+
+  if user do
+    IO.inspect(user.password_hash, label: "Stored Password")
+    IO.inspect(password, label: "Provided Password")
+
+    if user.password_hash == password do
+      {:ok, user}
+    else
+      {:error, "Invalid credentials"}
+    end
+  else
+    {:error, "Invalid credentials"}
+  end
+end
+    
+    @doc """
+  Creates a changeset for login validations.
+  """
+  def change_user_login(attrs \\ %{}) do
+    Ecto.Changeset.cast(%User{}, attrs, [:email, :password])
+    |> Ecto.Changeset.validate_required([:email, :password])
+  end
 end
