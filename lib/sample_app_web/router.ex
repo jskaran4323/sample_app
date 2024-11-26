@@ -5,7 +5,7 @@ defmodule SampleAppWeb.Router do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
-
+    plug SampleAppWeb.Plugs.FetchCurrentUser
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
@@ -26,6 +26,10 @@ defmodule SampleAppWeb.Router do
     get("/contact", StaticPageController, :contact, as: :contact)
     get("/signup", UserController,:new, as: :signup)
     post("/signup", UserController,:create, as: :signup)
+    get("/login", SessionController, :new,as: :login)
+    post("/login", SessionController, :create,as: :login)
+    delete("/logout", SessionController, :delete ,as: :logout)
+
     resources "/users", UserController
   end
 

@@ -54,9 +54,28 @@ defmodule SampleAppWeb.Layouts do
               <li class="nav-item">
                 <.link navigate={~p"/help"} class="hover:text-gray-300">Help</.link>
               </li>
-              <li class="nav-item">
-                <.link navigate="#" class="hover:text-gray-300">Log in</.link>
-              </li>
+             <li class="nav-item">
+               <%= IO.inspect(assigns[:current_user], label: "Current User in Template") %>
+              <%= if assigns[:current_user] do %>
+
+
+              <.link
+               navigate={~p"/logout"}
+               method="delete"
+              class="hover:text-gray-300"
+              >
+                Log out
+              </.link>
+                <% else %>
+              <.link
+                 navigate={~p"/login"}
+               class="hover:text-gray-300"
+                >
+                Log in
+                </.link>
+
+              <% end %>
+            </li>
             </ul>
           </div>
         </div>
