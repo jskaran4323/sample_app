@@ -4,7 +4,7 @@
   <aside class="col-md-4">
     <section class="user_info">
 <h1>
-  <%= SampleAppWeb.GravatarHelper.gravatar_for(assigns[:user]) %>
+   <%= SampleAppWeb.GravatarHelper.gravatar_for(assigns[:user] ) %>
   <%= assigns[:user].name %>
 </h1>
    </section>
@@ -17,3 +17,18 @@
 <p>updated_at: <%= @user.updated_at %></p>
 <p>NaiveDateTime: <%= NaiveDateTime.utc_now() %></p>
 
+
+
+    <div class="mt-6 text-center">
+      <.link navigate={~p"/users/#{@user.id}/edit"} class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+        Edit Profile
+      </.link>
+      <.link
+        href={~p"/users/#{@user.id}"}
+        method="delete"
+        data-confirm="Are you sure?"
+        class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded ml-2"
+      >
+        Delete Account
+      </.link>
+          </div>

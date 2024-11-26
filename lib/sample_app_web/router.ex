@@ -30,7 +30,7 @@ defmodule SampleAppWeb.Router do
     post("/login", SessionController, :create,as: :login)
     delete("/logout", SessionController, :delete ,as: :logout)
 
-    resources "/users", UserController
+    resources "/users", UserController, only: [:index, :show, :edit, :update, :delete]
   end
 
   # Other scopes may use custom stacks.

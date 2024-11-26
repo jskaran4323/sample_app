@@ -13,12 +13,19 @@ defmodule SampleAppWeb.Plugs.FetchCurrentUser do
   def call(conn, _opts) do
     user_id = get_session(conn, :user_id)
       IO.inspect(user_id, label: "User ID in session")
+
     if user_id do
-      user = Accounts.get_user!(user_id)
-      IO.inspect(user, label: "Fetched User")
-      assign(conn, :current_user, user)
+      case Accounts.get_user!(user_id) do
+        nil ->
+          # User no longer exists; clear session and assign nil
+          conn
+          |> configure_session(drop: true)
+          |> assign(:current_user, nil)
+
+        user ->
+          assign(conn, :current_user, user)
+      end
     else
-       IO.puts("No user ID found in session")
       assign(conn, :current_user, nil)
     end
   end
