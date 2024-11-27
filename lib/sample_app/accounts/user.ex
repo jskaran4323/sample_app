@@ -10,6 +10,7 @@ defmodule SampleApp.Accounts.User do
     field :password_hash, :string
     field :password , :string , virtual: true
     field :password_confirmation , :string , virtual: true
+    has_many :microposts, SampleApp.Microposts.Micropost
 
     timestamps(type: :utc_datetime)
   end

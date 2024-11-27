@@ -1,0 +1,10 @@
+<h2>Microposts</h2>
+<ul>
+  <%= for micropost <- @user.microposts do %>
+    <li>
+      <%= micropost.content %>
+      <.link navigate={~p"/microposts/#{micropost.id}/edit"}>Edit</.link>
+      <.link navigate={~p"/microposts/#{micropost.id}"} method="delete">Delete</.link>
+    </li>
+  <% end %>
+</ul>

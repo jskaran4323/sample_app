@@ -1,4 +1,5 @@
 defmodule SampleAppWeb.Router do
+
   use SampleAppWeb, :router
 
   pipeline :browser do
@@ -33,6 +34,9 @@ defmodule SampleAppWeb.Router do
     get "/logout", SessionController, :delete
 
     resources "/users", UserController, only: [:index, :show, :edit, :update, :delete]
+
+    resources "/microposts", MicropostController, only: [:new, :create, :edit, :update, :delete]
+
   end
 
   # Other scopes may use custom stacks.
