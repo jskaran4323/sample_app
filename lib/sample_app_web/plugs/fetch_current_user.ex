@@ -9,7 +9,7 @@ defmodule SampleAppWeb.Plugs.FetchCurrentUser do
     user_id = get_session(conn, :user_id)
 
     if user_id do
-    
+
       user = Accounts.get_user!(user_id) |> Repo.preload(:microposts)
       assign(conn, :current_user, user)
     else

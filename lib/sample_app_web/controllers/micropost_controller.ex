@@ -8,7 +8,7 @@ defmodule SampleAppWeb.MicropostController do
   def show(conn, %{"id" => id}) do
 
   user = SampleApp.Repo.get!(SampleApp.Accounts.User, id)
-         |> SampleApp.Repo.preload(:microposts)
+       |> SampleApp.Repo.preload(:microposts)
     if user do
     render(conn, "show.html", user: user)
   else
