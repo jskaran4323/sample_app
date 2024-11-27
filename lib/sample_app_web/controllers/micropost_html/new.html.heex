@@ -1,10 +1,25 @@
-<h2>Microposts</h2>
-<ul>
-  <%= for micropost <- @user.microposts do %>
-    <li>
-      <%= micropost.content %>
-      <.link navigate={~p"/microposts/#{micropost.id}/edit"}>Edit</.link>
-      <.link navigate={~p"/microposts/#{micropost.id}"} method="delete">Delete</.link>
-    </li>
-  <% end %>
-</ul>
+
+
+
+<h2>Create a New Micropost</h2>
+
+<.form :let={f} for={@changeset} action={~p"/microposts"} method="post">
+  <div class="form-group">
+    <label for="content">Content</label>
+    <.input
+      type="textarea"
+      
+      field={f[:content]}
+      id="content"
+      class="form-control w-full rounded border-gray-300"
+      rows="3"
+    />
+    </div>
+    <%= if error = @changeset.errors[:content] do %>
+  <p class="text-red-500"><%= elem(error, 0) %></p>
+<% end %>
+ 
+  <div class="form-group mt-4">
+    <button type="submit" class="btn btn-primary">Create Micropost</button>
+  </div>
+</.form>

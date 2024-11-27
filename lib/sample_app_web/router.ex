@@ -35,7 +35,9 @@ defmodule SampleAppWeb.Router do
 
     resources "/users", UserController, only: [:index, :show, :edit, :update, :delete]
 
-    resources "/microposts", MicropostController, only: [:new, :create, :edit, :update, :delete]
+    get("/users/:id/microposts", MicropostController, :show , as: :user_microposts)
+
+    resources "/microposts", MicropostController, only: [:new,  :create, :edit, :update, :delete]
 
   end
 
