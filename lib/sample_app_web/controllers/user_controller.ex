@@ -10,7 +10,7 @@ defmodule SampleAppWeb.UserController do
   end
 
   def show(conn, %{"id" => id})do
-    user= Accounts.get_user!(id)
+    user= Accounts.get_user!(id) 
       render(conn, :show, user: user)
   end
 
@@ -23,7 +23,7 @@ defmodule SampleAppWeb.UserController do
       |> put_flash(:success, "Welcome to Sample App")
       |> redirect(to: ~p"/users/#{user.id}")
 
-        # handle a successful signup
+
         {:error, %Ecto.Changeset{}=changeset}->
           render(conn,"new.html", changeset: changeset)
     end
@@ -32,7 +32,7 @@ defmodule SampleAppWeb.UserController do
     changeset=Accounts.change_user(%User{})
     render(conn, "new.html", changeset: changeset)
   end
-   @spec edit(Plug.Conn.t(), map()) :: Plug.Conn.t()
+
    def edit(conn, %{"id" => id}) do
     user= Accounts.get_user!(id)
     changeset= Accounts.change_user(user)

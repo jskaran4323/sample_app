@@ -1,0 +1,14 @@
+<h1><%= @user.name %>'s Microposts</h1>
+<ul>
+  <%= if Enum.empty?(@user.microposts) do %>
+    <p>No microposts found.</p>
+  <% else %>
+    <%= for micropost <- @user.microposts do %>
+      <li class="mb-4">
+        <p><%= micropost.content %></p>
+        <.link navigate={~p"/microposts/#{micropost.id}/edit"} class="text-blue-500">Edit</.link>
+        <.link navigate={~p"/microposts/#{micropost.id}"} method="delete" class="text-red-500">Delete</.link>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
