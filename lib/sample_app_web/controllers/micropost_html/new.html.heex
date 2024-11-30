@@ -20,6 +20,11 @@
 <% end %>
  
   <div class="form-group mt-4">
-    <button type="submit" class="btn btn-primary">Create Micropost</button>
+    <button type="submit" class="btn btn-primary">Create post</button>
+   
+  
+  
   </div>
+   
 </.form>
+<button type="submit"  navigate={~p"/users/#{assigns[:current_user]}/microposts"} class="btn btn-primary">See your post</button>
