@@ -28,6 +28,7 @@ end
 
   def create(conn, %{"micropost"=> micropost_params}) do
     user_id=conn.assigns[:current_user].id
+    IO.inspect(user_id)
     micropost_params=Map.put(micropost_params,"user_id", user_id)
 
     case Microposts.create_micropost(micropost_params) do
@@ -43,9 +44,14 @@ end
   end
 
   def delete(conn, %{"id"=> id}) do
-    micropost= Microposts.get_micropost!(id)
+    case Microposts.get_micropost!(id) do
+    nil ->
+      conn
+      |> put_flash(:error,"Micropost doesnt exists")
+      |> redirect(to: ~p"/users/#{conn.assigns[:current_user].id}")
 
-    if micropost.user_id==conn.assigns[:current_user].id do
+      micropost ->
+      if micropost.user_id==conn.assigns[:current_user].id do
      {:ok, _}= Microposts.delete_micropost(micropost)
      conn
      |> put_flash(:info, "Micropost deleted succesfully")
@@ -55,5 +61,8 @@ end
       |> put_flash(:error, "you cant delete this micropost")
       |> redirect(to: ~p"/users/#{conn.assigns[:current_user].id}")
     end
+    end
+
+
   end
 end
