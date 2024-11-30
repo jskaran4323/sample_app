@@ -11,7 +11,7 @@ defmodule SampleApp.Microposts.Micropost do
   @doc false
   def changeset(micropost, attrs) do
     micropost
-    |> cast(attrs, [:content])
-    |> validate_required([:content])
+    |> cast(attrs, [:content, :user_id])
+    |> validate_required([:content, :user_id])
   end
 end

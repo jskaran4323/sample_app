@@ -28,6 +28,7 @@ end
 
   def create(conn, %{"micropost"=> micropost_params}) do
     user_id=conn.assigns[:current_user].id
+    IO.inspect(user_id)
     micropost_params=Map.put(micropost_params,"user_id", user_id)
 
     case Microposts.create_micropost(micropost_params) do
